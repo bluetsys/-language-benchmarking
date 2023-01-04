@@ -1,5 +1,7 @@
 # language-benchmarking
 
+1에서 100000000까지의 합을 구하는 프로그램을 다양한 언어로 작성하고, 각 언어별로 실행시간을 측정한다.
+
 ## 빌드 docker
 ``` bash
 docker build -t sample .
