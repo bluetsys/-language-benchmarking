@@ -1,14 +1,14 @@
 add <- 0
-st <- proc.time()
+st <- Sys.time()
 
-for(index in 0:100000001)
+for(index in 0:100000000)
 {
     add <- add + index;
 }
 
-ed <- proc.time() - st
+ed <- Sys.time() - st
 
 cat("==========================",fill=TRUE)
 cat("R",fill=TRUE)
-cat(add,fill=TRUE)
-cat(ed,fill=TRUE)
+cat(format(add, scientific = FALSE),fill=TRUE)
+cat(ed ,fill=TRUE)
