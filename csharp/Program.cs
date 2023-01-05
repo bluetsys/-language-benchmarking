@@ -11,5 +11,4 @@ var ed = System.DateTime.Now - st;
 System.Console.WriteLine("==========================");
 System.Console.WriteLine("C#");
 System.Console.WriteLine(add);
-System.Console.WriteLine(ed);
 System.Console.WriteLine(ed.Milliseconds / 1000F);
