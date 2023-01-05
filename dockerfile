@@ -141,6 +141,14 @@ COPY sql-sqlite/app.sql .
 RUN sqlite3 < app.sql >> result.txt
 
 # ==================================================
+FROM ubuntu:22.04 as basic
+WORKDIR /src
+RUN apt-get update
+RUN apt-get install -y yabasic
+COPY basic/app.yab .
+RUN yabasic app.yab >> result.txt
+
+# ==================================================
 FROM ubuntu:22.04 as base
 WORKDIR /app
 COPY --from=nasm /src/result.txt ./nasm.txt
@@ -163,4 +171,5 @@ COPY --from=scala /src/result.txt ./scala.txt
 COPY --from=swift /src/result.txt ./swift.txt
 COPY --from=lua /src/result.txt ./lua.txt
 COPY --from=sqllite /src/result.txt ./sqllite.txt
+COPY --from=basic /src/result.txt ./basic.txt
 ENTRYPOINT cp -r . /result
