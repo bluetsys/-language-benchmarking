@@ -12,6 +12,5 @@ fn main() {
     println!("==========================");
     println!("rust");
     println!("{:?}", _add);
-    println!("{:?}",(duration - now));
-
+    println!("{:?}",((duration - now).as_nanos()) as f64 / 1000.0);
 }
