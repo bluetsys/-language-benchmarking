@@ -118,10 +118,19 @@ RUN apt-get install -y scala
 COPY scala/app.scala .
 RUN scala -nobootcp -nc app.scala >> result.txt
 
+# ==================================================
 FROM swift as swift
 WORKDIR /src
 COPY swift/app.swift .
 RUN swift app.swift >> result.txt
+
+# ==================================================
+FROM ubuntu:22.04 as lua
+WORKDIR /src
+RUN apt-get update
+RUN apt-get install -y lua5.2
+COPY lua/app.lua .
+RUN lua app.lua >> result.txt
 
 # ==================================================
 FROM ubuntu:22.04 as base
@@ -144,4 +153,5 @@ COPY --from=dart /src/result.txt ./dart.txt
 COPY --from=perl /src/result.txt ./perl.txt
 COPY --from=scala /src/result.txt ./scala.txt
 COPY --from=swift /src/result.txt ./swift.txt
+COPY --from=lua /src/app.lua ./lua.txt
 ENTRYPOINT cp -r . /result
