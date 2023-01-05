@@ -149,6 +149,15 @@ COPY basic/app.yab .
 RUN yabasic app.yab >> result.txt
 
 # ==================================================
+FROM ubuntu:22.04 as pascal
+WORKDIR /src
+RUN apt-get update
+RUN apt-get install -y fpc
+COPY pascal/app.pas .
+RUN fpc app.pas
+RUN ./app >> result.txt
+
+# ==================================================
 FROM ubuntu:22.04 as base
 WORKDIR /app
 COPY --from=nasm /src/result.txt ./nasm.txt
@@ -172,4 +181,5 @@ COPY --from=swift /src/result.txt ./swift.txt
 COPY --from=lua /src/result.txt ./lua.txt
 COPY --from=sqllite /src/result.txt ./sqllite.txt
 COPY --from=basic /src/result.txt ./basic.txt
+COPY --from=pascal /src/result.txt ./pascal.txt
 ENTRYPOINT cp -r . /result
