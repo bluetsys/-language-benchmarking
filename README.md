@@ -22,7 +22,7 @@ docker cp language-benchmarking:/app/. ./result/
 cat result/* > result.txt
 ```
 
-![결과](./resource/result.png)  
+![결과](./resource/clip20230105_1150_22_740.png)  
 
 > C# 테스트
 > 5000000050000000
@@ -75,3 +75,6 @@ cat result/* > result.txt
 > rust 테스트
 > 5000000050000000
 > 300ns
+
+
+# docker run -it -v $(pwd)/kotlin:/kotlin --rm zenika/kotlin bash

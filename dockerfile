@@ -89,6 +89,13 @@ COPY cobol/app.cbl .
 RUN cobc -x -free -o ./app app.cbl
 RUN ./app >> result.txt
 
+# ==================================================
+FROM zenika/kotlin as kotlin
+WORKDIR /src
+COPY kotlin/app.kt .
+RUN kotlinc -d app.jar app.kt
+RUN java -jar ./app.jar >> result.txt
+
 # # ==================================================
 # FROM ubuntu:22.04 as basic
 # WORKDIR /src
@@ -114,3 +121,4 @@ COPY --from=rust /src/result.txt ./rust.txt
 COPY --from=golang /src/result.txt ./golang.txt
 COPY --from=r-base /src/result.txt ./r-base.txt
 COPY --from=open-cobol /src/result.txt ./open-cobol.txt
+COPY --from=kotlin /src/result.txt ./kotlin.txt
