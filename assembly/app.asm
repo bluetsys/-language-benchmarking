@@ -18,10 +18,12 @@ do:
 	MOV     rsi, split					; 파라메타2
 	MOV     rdx, title					; 파라메타3
 	MOV     rcx, rbx					; 파라메타4
+	MOV     r8, title2					; 파라메타5
 	XOR		rax, rax
 	CALL    printf
 
 SECTION .data
-	format: 	DB 	"%s%s%ld", 10, 0
+	format: 	DB 	"%s%s%ld%s", 10, 0
 	split: 		DB 	"==========================", 10, 0
 	title: 		DB 	"assembly", 10, 0
+	title2: 	DB 	"0", 10, 0
