@@ -104,21 +104,27 @@ COPY dart/app.dart .
 RUN dart app.dart >> result.txt
 
 # ==================================================
-FROM ubuntu:22.04 as base
-WORKDIR /app
-COPY --from=nasm /src/result.txt ./nasm.txt
-COPY --from=node /src/result.txt ./node.txt
-COPY --from=gcc /src/result.txt ./gcc.txt
-COPY --from=dotnet-cs /src/result.txt ./dotnet-cs.txt
-COPY --from=python /src/result.txt ./python.txt
-COPY --from=ruby /src/result.txt ./ruby.txt
-COPY --from=openjdk /src/result.txt ./openjdk.txt
-COPY --from=julia /src/result.txt ./julia.txt
-COPY --from=fortran /src/result.txt ./fortran.txt
-COPY --from=rust /src/result.txt ./rust.txt
-COPY --from=golang /src/result.txt ./golang.txt
-COPY --from=r-base /src/result.txt ./r-base.txt
-COPY --from=open-cobol /src/result.txt ./open-cobol.txt
-COPY --from=kotlin /src/result.txt ./kotlin.txt
-COPY --from=dart /src/result.txt ./dart.txt
-CMD cp -r . /result
+FROM dart as perl
+WORKDIR /src
+COPY dart/app.dart .
+RUN dart app.dart >> result.txt
+
+# # ==================================================
+# FROM ubuntu:22.04 as base
+# WORKDIR /app
+# COPY --from=nasm /src/result.txt ./nasm.txt
+# COPY --from=node /src/result.txt ./node.txt
+# COPY --from=gcc /src/result.txt ./gcc.txt
+# COPY --from=dotnet-cs /src/result.txt ./dotnet-cs.txt
+# COPY --from=python /src/result.txt ./python.txt
+# COPY --from=ruby /src/result.txt ./ruby.txt
+# COPY --from=openjdk /src/result.txt ./openjdk.txt
+# COPY --from=julia /src/result.txt ./julia.txt
+# COPY --from=fortran /src/result.txt ./fortran.txt
+# COPY --from=rust /src/result.txt ./rust.txt
+# COPY --from=golang /src/result.txt ./golang.txt
+# COPY --from=r-base /src/result.txt ./r-base.txt
+# COPY --from=open-cobol /src/result.txt ./open-cobol.txt
+# COPY --from=kotlin /src/result.txt ./kotlin.txt
+# COPY --from=dart /src/result.txt ./dart.txt
+# ENTRYPOINT cp -r . /result
