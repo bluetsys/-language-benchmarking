@@ -7,6 +7,6 @@ end
 ed = Time.now - st
 
 puts "=========================="
-puts "ruby 테스트"
+puts "ruby"
 puts sum
 puts ed

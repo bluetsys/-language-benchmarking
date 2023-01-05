@@ -8,7 +8,7 @@ function main()
     end
 
     println("==========================")
-    println("julia 테스트")
+    println("julia")
     println(add)
     println((time_ns() - st) / 1000000000)
 end;

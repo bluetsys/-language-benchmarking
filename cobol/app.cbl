@@ -30,7 +30,7 @@ PROCEDURE DIVISION.
            SUBTRACT WS-ST FROM WS-ED
 
            DISPLAY "==========================".
-           DISPLAY "cobol 테스트".
+           DISPLAY "cobol".
            DISPLAY WS-SUM.
            DISPLAY WS-ED.
 

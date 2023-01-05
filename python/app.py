@@ -9,6 +9,6 @@ for index in range(1, 100000000):
 en = time.perf_counter() - st
 
 print("==========================")
-print("python 테스트")
+print("python")
 print(add)
 print(en)

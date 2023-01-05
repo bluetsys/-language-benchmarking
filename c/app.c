@@ -13,7 +13,7 @@ int main()
     long ed = time(NULL) - st;
 
     printf("==========================\r\n");
-    printf("gcc 테스트\r\n");
+    printf("gcc\r\n");
     printf("%ld\r\n", add);
     printf("%lf\r\n", (double) ed / (double) 1000);
 }

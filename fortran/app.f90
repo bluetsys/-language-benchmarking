@@ -12,7 +12,7 @@ PROGRAM CONSOLE1
     CALL CPU_TIME(FINISH)
 
     PRINT *, '=========================='
-    PRINT *, 'fortran 테스트'
+    PRINT *, 'fortran'
     PRINT *, ADD
     PRINT *, FINISH - START
 

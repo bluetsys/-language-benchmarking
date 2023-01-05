@@ -24,4 +24,4 @@ do:
 SECTION .data
 	format: 	DB 	"%s%s%ld", 10, 0
 	split: 		DB 	"==========================", 10, 0
-	title: 		DB 	"assembly 테스트", 10, 0
+	title: 		DB 	"assembly", 10, 0

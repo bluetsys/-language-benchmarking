@@ -9,6 +9,6 @@ for(index in 0:100000001)
 ed <- proc.time() - st
 
 cat("==========================",fill=TRUE)
-cat("R 테스트",fill=TRUE)
+cat("R",fill=TRUE)
 cat(add,fill=TRUE)
 cat(ed,fill=TRUE)

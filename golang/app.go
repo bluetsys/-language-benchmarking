@@ -16,7 +16,7 @@ func main() {
 	ed := time.Since(st)
 
 	fmt.Println("==========================")
-	fmt.Println("go 테스트")
+	fmt.Println("go")
 	fmt.Println(add)
 	fmt.Println(ed)
 }

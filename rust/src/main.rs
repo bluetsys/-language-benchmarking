@@ -10,7 +10,7 @@ fn main() {
 
     let duration = Instant::now();
     println!("==========================");
-    println!("rust 테스트");
+    println!("rust");
     println!("{:?}", _add);
     println!("{:?}",(duration - now));
 

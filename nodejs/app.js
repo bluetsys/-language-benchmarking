@@ -8,6 +8,6 @@ for (var index = 0; index <= 100000000; index++) {
 var ed = Date.now() - st;
 
 console.log("==========================")
-console.log("nodejs 테스트")
+console.log("nodejs")
 console.log(add);
 console.log(ed / 1000);
