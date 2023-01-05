@@ -13,7 +13,7 @@ begin
     sum := 0;
     st := Now;
 
-    for index := 1 to 1000000000 do
+    for index := 1 to 100000000 do
     begin
         sum := sum + index;
     end;
