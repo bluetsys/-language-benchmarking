@@ -97,16 +97,13 @@ COPY kotlin/app.kt .
 RUN kotlinc -d app.jar app.kt
 RUN java -jar ./app.jar >> result.txt
 
-# # ==================================================
-# FROM ubuntu:22.04 as basic
-# WORKDIR /src
-# RUN apt-get update
-# RUN apt-get install -y bwbasic
-# COPY basic/app.bas .
+# ==================================================
+FROM dart as dart
+WORKDIR /src
+COPY dart/app.dart .
+RUN dart app.dart >> result.txt
 
-# FROM perl as perl
-
-
+# ==================================================
 FROM ubuntu:22.04 as base
 WORKDIR /app
 COPY --from=nasm /src/result.txt ./nasm.txt
@@ -123,4 +120,5 @@ COPY --from=golang /src/result.txt ./golang.txt
 COPY --from=r-base /src/result.txt ./r-base.txt
 COPY --from=open-cobol /src/result.txt ./open-cobol.txt
 COPY --from=kotlin /src/result.txt ./kotlin.txt
+COPY --from=dart /src/result.txt ./dart.txt
 CMD cp -r . /result
