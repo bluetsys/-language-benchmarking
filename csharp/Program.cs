@@ -12,3 +12,4 @@ System.Console.WriteLine("==========================");
 System.Console.WriteLine("C# 테스트");
 System.Console.WriteLine(add);
 System.Console.WriteLine(ed);
+System.Console.WriteLine(ed.Milliseconds / 1000F);
