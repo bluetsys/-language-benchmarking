@@ -153,5 +153,5 @@ COPY --from=dart /src/result.txt ./dart.txt
 COPY --from=perl /src/result.txt ./perl.txt
 COPY --from=scala /src/result.txt ./scala.txt
 COPY --from=swift /src/result.txt ./swift.txt
-COPY --from=lua /src/app.lua ./lua.txt
+COPY --from=lua /src/result.txt ./lua.txt
 ENTRYPOINT cp -r . /result
