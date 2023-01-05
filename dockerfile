@@ -133,6 +133,14 @@ COPY lua/app.lua .
 RUN lua app.lua >> result.txt
 
 # ==================================================
+FROM ubuntu:22.04 as sqllite
+WORKDIR /src
+RUN apt-get update
+RUN apt-get install -y sqlite3
+COPY sql-sqlite/app.sql .
+RUN sqlite3 < app.sql >> result.txt
+
+# ==================================================
 FROM ubuntu:22.04 as base
 WORKDIR /app
 COPY --from=nasm /src/result.txt ./nasm.txt
@@ -154,4 +162,5 @@ COPY --from=perl /src/result.txt ./perl.txt
 COPY --from=scala /src/result.txt ./scala.txt
 COPY --from=swift /src/result.txt ./swift.txt
 COPY --from=lua /src/result.txt ./lua.txt
+COPY --from=sqllite /src/result.txt ./sqllite.txt
 ENTRYPOINT cp -r . /result
