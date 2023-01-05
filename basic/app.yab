@@ -1,0 +1,11 @@
+for index = 1 to 100000000
+    add = add + index
+next
+
+se = peek("secondsrunning")
+mi = peek("millisrunning")
+
+print "=========================="
+print "basic"
+print int(add)
+print str$(se) + "." + str$(mi)
