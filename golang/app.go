@@ -13,10 +13,10 @@ func main() {
 		add = add + i
 	}
 
-	ed := time.Since(st)
+	ed := float64(time.Since(st))
 
 	fmt.Println("==========================")
 	fmt.Println("go")
 	fmt.Println(add)
-	fmt.Println(ed)
+	fmt.Printf("%v", ed/1000000000)
 }
