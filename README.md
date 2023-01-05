@@ -22,6 +22,8 @@ docker cp language-benchmarking:/app/. ./result/
 cat result/* > result.txt
 ```
 
+![결과](./resource/result.png)  
+
 > C# 테스트
 > 5000000050000000
 > 00:00:00.0489763
