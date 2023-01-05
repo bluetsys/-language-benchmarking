@@ -110,6 +110,20 @@ COPY perl/app.pl .
 RUN perl app.pl >> result.txt
 
 # ==================================================
+FROM ubuntu:22.04 as scala
+WORKDIR /src
+RUN apt-get update
+RUN apt-get install -y openjdk-17-jdk
+RUN apt-get install -y scala
+COPY scala/app.scala .
+RUN scala -nobootcp -nc app.scala >> result.txt
+
+FROM swift as swift
+WORKDIR /src
+COPY swift/app.swift .
+RUN swift app.swift >> result.txt
+
+# ==================================================
 FROM ubuntu:22.04 as base
 WORKDIR /app
 COPY --from=nasm /src/result.txt ./nasm.txt
@@ -128,4 +142,6 @@ COPY --from=open-cobol /src/result.txt ./open-cobol.txt
 COPY --from=kotlin /src/result.txt ./kotlin.txt
 COPY --from=dart /src/result.txt ./dart.txt
 COPY --from=perl /src/result.txt ./perl.txt
+COPY --from=scala /src/result.txt ./scala.txt
+COPY --from=swift /src/result.txt ./swift.txt
 ENTRYPOINT cp -r . /result
