@@ -75,6 +75,7 @@ WORKDIR /src
 COPY rust/. .
 RUN cargo run --release >> result.txt
 
+# ==================================================
 FROM r-base as r-base
 WORKDIR /src
 COPY r-lang/app.r app.r
@@ -122,3 +123,4 @@ COPY --from=golang /src/result.txt ./golang.txt
 COPY --from=r-base /src/result.txt ./r-base.txt
 COPY --from=open-cobol /src/result.txt ./open-cobol.txt
 COPY --from=kotlin /src/result.txt ./kotlin.txt
+CMD cp -r . /result

@@ -1,4 +1,4 @@
-docker build -t sample .
-docker run -v $pwd/result:/app1 -it --rm sample bash
-
-docker cp sample:/app/result ./result/.
+clear
+docker build -t language-benchmarking .
+docker run -it --rm -v $pwd/result:/result --name language-benchmarking language-benchmarking bash
+#docker run -it --rm language-benchmarking bash

@@ -4,12 +4,12 @@
 
 ## 빌드 docker
 ``` bash
-docker build -t sample .
+docker build -t language-benchmarking .
 ```
 
 ## 실행 docker
 ``` bash
-docker run -it --name language-benchmarking --rm sample bash
+docker run -it --name language-benchmarking --rm language-benchmarking bash
 ```
 
 ## docker에서 실행한 결과를 호스트로 복사
@@ -78,3 +78,9 @@ cat result/* > result.txt
 
 
 # docker run -it -v $(pwd)/kotlin:/kotlin --rm zenika/kotlin bash
+
+docker build -t sample1 -f dockerfile1 .
+docker run -it --rm sample1 bash
+docker run -it -v $pwd/kotlin:/kotlin --rm sample1 bash
+
+javac -d bin app.java && jar -cvmf manifest.txt aa.jar -C bin . && java -jar aa.jar
