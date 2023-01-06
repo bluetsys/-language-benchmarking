@@ -7,5 +7,5 @@ mi = peek("millisrunning")
 
 print "=========================="
 print "basic"
-print int(add)
+print str$(add)
 print str$(se) + "." + str$(mi)

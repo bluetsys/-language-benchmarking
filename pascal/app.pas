@@ -4,25 +4,27 @@ uses
   SysUtils, DateUtils;
 
 var
-    sum:int64;
+    add:int64;
     index:int64;
     st:TDateTime;
     ed:TDateTime;
+    se:Double;
 begin
 
-    sum := 0;
+    add := 0;
     st := Now;
 
     for index := 1 to 100000000 do
     begin
-        sum := sum + index;
+        add := add + index;
     end;
 
-    ed := Now - st;
+    ed := Now;
+    se := MilliSecondsBetween(st,ed) / 1000.0;
 
     writeln ('==========================');
     writeln ('pascal');
-    writeln (sum);
-    writeln (ed);
+    writeln (add);
+    writeln (FloatToStr(se));
 
 end.
