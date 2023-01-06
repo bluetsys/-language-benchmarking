@@ -1,47 +1,43 @@
 IDENTIFICATION DIVISION.
-PROGRAM-ID. HELLO.
+PROGRAM-ID. sum-example.
 
 DATA DIVISION.
-       WORKING-STORAGE SECTION.
-       01 WS-INDEX             PIC 9(16) VALUE 0.
-       01 WS-SUM               PIC 9(16) VALUE 0.
-       01 WS-CURRENT-DATE.
-        02 ws-year             PIC 9(4).
-        02 ws-month            PIC 9(2).
-        02 ws-day              PIC 9(2).
-        02 ws-hours            PIC 9(2).
-        02 ws-minutes          PIC 9(2).
-        02 ws-seconds          PIC 9(2).
-        02 ws-MILLISECONDS     PIC 9(2).
-       01 WS-ST                PIC 9(16).
-       01 WS-ED                PIC 9(16).
-        
+WORKING-STORAGE SECTION.
+    01 WS_CURRENT_DATE_DATA.
+        05  WS_CURRENT_DATE.
+            10  WS_CURRENT_YEAR         PIC 9(04).
+            10  WS_CURRENT_MONTH        PIC 9(02).
+            10  WS_CURRENT_DAY          PIC 9(02).
+        05  WS_CURRENT_TIME.
+            10  WS_CURRENT_HOURS        PIC 9(02).
+            10  WS_CURRENT_MINUTE       PIC 9(02).
+            10  WS_CURRENT_SECOND       PIC 9(02).
+            10  WS_CURRENT_MILLISECONDS PIC 9(02).
+    01 WS_START_DATE_DATA               PIC 9(16).
+    01 WS_END_DATE_DATA                 PIC 9(16).
+    01 WS_ADD                           PIC 9(16) VALUE 0.
+    01 WD_INDEX                         PIC 9(16) VALUE 0.
+    01 WD_TIME                          PIC 9(3)V99.
+    
 PROCEDURE DIVISION.
 
-       MOVE FUNCTION CURRENT-DATE TO WS-CURRENT-DATE.
-       MOVE WS-CURRENT-DATE TO WS-ST.
-
-       A-PARA.
-           PERFORM B-PARA WITH TEST AFTER UNTIL WS-INDEX >= 100000000.
-
-           MOVE FUNCTION CURRENT-DATE TO WS-CURRENT-DATE.
-           MOVE WS-CURRENT-DATE TO WS-ED.
-
-           SUBTRACT WS-ST FROM WS-ED
-
-           DISPLAY "==========================".
-           DISPLAY "cobol".
-           DISPLAY WS-SUM.
-           DISPLAY WS-ED.
-
-           STOP RUN.
-       
-       B-PARA.
-           ADD 1 TO WS-INDEX.
-           ADD WS-INDEX TO WS-SUM.
-              
-       C-PARA.
-           DISPLAY "222"
+    MOVE FUNCTION CURRENT-DATE TO WS_CURRENT_DATE_DATA.
+    MOVE WS_CURRENT_DATE_DATA TO WS_START_DATE_DATA.
+    
+    PERFORM VARYING WD_INDEX FROM 1 BY 1
+        UNTIL WD_INDEX > 100000000
+            ADD WD_INDEX TO WS_ADD
+    END-PERFORM.
+    
+    MOVE FUNCTION CURRENT-DATE TO WS_CURRENT_DATE_DATA.
+    MOVE WS_CURRENT_DATE_DATA TO WS_END_DATE_DATA.
+    
+    SUBTRACT WS_START_DATE_DATA FROM WS_END_DATE_DATA
+    COMPUTE WD_TIME = WS_END_DATE_DATA / 1000.
+    
+    DISPLAY "==========================".
+    DISPLAY "cobol".
+    DISPLAY WS_ADD.
+    DISPLAY WD_TIME.
 
 STOP RUN.
-
