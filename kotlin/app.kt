@@ -1,5 +1,5 @@
 fun main() {
-    var add = 0.0
+    var add = 0L
     val startTime = System.currentTimeMillis()
 
     for (count in 1..100000000) {
@@ -10,6 +10,6 @@ fun main() {
     
     println("==========================")
     println("kotlin - java");
-    println(add)
+    println("${add}")
     println(endTime/ 1000.0f)
 }

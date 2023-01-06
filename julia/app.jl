@@ -10,7 +10,7 @@ function main()
     println("==========================")
     println("julia")
     println(add)
-    println((time_ns() - st) / 1000000000)
+    println((time_ns() - st) / 100000000)
 end;
 
 main()
