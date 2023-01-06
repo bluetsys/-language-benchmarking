@@ -121,8 +121,8 @@ RUN scala -nobootcp -nc app.scala >> result.txt
 # ==================================================
 FROM swift as swift
 WORKDIR /src
-COPY swift/app.swift .
-RUN swift app.swift >> result.txt
+COPY swift/. .
+RUN swift run -c release >> result.txt
 
 # ==================================================
 FROM ubuntu:22.04 as lua
