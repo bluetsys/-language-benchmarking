@@ -119,9 +119,9 @@ COPY scala/app.scala .
 RUN scala -nobootcp -nc app.scala >> result.txt
 
 # ==================================================
-FROM swift as swift
-WORKDIR /swift
-COPY swift/. .
+# FROM swift as swift
+# WORKDIR /swift
+# COPY swift/. .
 # RUN swift run -c release >> result.txt
 
 # # ==================================================
@@ -158,28 +158,28 @@ COPY swift/. .
 # RUN ./app >> result.txt
 
 # # ==================================================
-# FROM ubuntu:22.04 as base
-# WORKDIR /app
-# COPY --from=nasm /src/result.txt ./nasm.txt
-# COPY --from=node /src/result.txt ./node.txt
-# COPY --from=gcc /src/result.txt ./gcc.txt
-# COPY --from=dotnet-cs /src/result.txt ./dotnet-cs.txt
-# COPY --from=python /src/result.txt ./python.txt
-# COPY --from=ruby /src/result.txt ./ruby.txt
-# COPY --from=openjdk /src/result.txt ./openjdk.txt
-# COPY --from=julia /src/result.txt ./julia.txt
-# COPY --from=fortran /src/result.txt ./fortran.txt
-# COPY --from=rust /src/result.txt ./rust.txt
-# COPY --from=golang /src/result.txt ./golang.txt
-# COPY --from=r-base /src/result.txt ./r-base.txt
-# COPY --from=open-cobol /src/result.txt ./open-cobol.txt
-# COPY --from=kotlin /src/result.txt ./kotlin.txt
-# COPY --from=dart /src/result.txt ./dart.txt
-# COPY --from=perl /src/result.txt ./perl.txt
-# COPY --from=scala /src/result.txt ./scala.txt
+FROM ubuntu:22.04 as base
+WORKDIR /app
+COPY --from=nasm /src/result.txt ./nasm.txt
+COPY --from=node /src/result.txt ./node.txt
+COPY --from=gcc /src/result.txt ./gcc.txt
+COPY --from=dotnet-cs /src/result.txt ./dotnet-cs.txt
+COPY --from=python /src/result.txt ./python.txt
+COPY --from=ruby /src/result.txt ./ruby.txt
+COPY --from=openjdk /src/result.txt ./openjdk.txt
+COPY --from=julia /src/result.txt ./julia.txt
+COPY --from=fortran /src/result.txt ./fortran.txt
+COPY --from=rust /src/result.txt ./rust.txt
+COPY --from=golang /src/result.txt ./golang.txt
+COPY --from=r-base /src/result.txt ./r-base.txt
+COPY --from=open-cobol /src/result.txt ./open-cobol.txt
+COPY --from=kotlin /src/result.txt ./kotlin.txt
+COPY --from=dart /src/result.txt ./dart.txt
+COPY --from=perl /src/result.txt ./perl.txt
+COPY --from=scala /src/result.txt ./scala.txt
 # COPY --from=swift /swift/result.txt ./swift.txt
-# COPY --from=lua /src/result.txt ./lua.txt
-# COPY --from=sqllite /src/result.txt ./sqllite.txt
-# COPY --from=basic /src/result.txt ./basic.txt
-# COPY --from=pascal /src/result.txt ./pascal.txt
-# ENTRYPOINT cp -r . /result
+COPY --from=lua /src/result.txt ./lua.txt
+COPY --from=sqllite /src/result.txt ./sqllite.txt
+COPY --from=basic /src/result.txt ./basic.txt
+COPY --from=pascal /src/result.txt ./pascal.txt
+ENTRYPOINT cp -r . /result
