@@ -120,7 +120,7 @@ RUN scala -nobootcp -nc app.scala >> result.txt
 
 # ==================================================
 FROM swift as swift
-WORKDIR /src
+WORKDIR /swift
 COPY swift/. .
 # RUN swift run -c release >> result.txt
 
@@ -177,7 +177,7 @@ COPY swift/. .
 # COPY --from=dart /src/result.txt ./dart.txt
 # COPY --from=perl /src/result.txt ./perl.txt
 # COPY --from=scala /src/result.txt ./scala.txt
-# COPY --from=swift /src/result.txt ./swift.txt
+# COPY --from=swift /swift/result.txt ./swift.txt
 # COPY --from=lua /src/result.txt ./lua.txt
 # COPY --from=sqllite /src/result.txt ./sqllite.txt
 # COPY --from=basic /src/result.txt ./basic.txt
