@@ -1,11 +1,11 @@
 import Foundation
 
 @main
-public struct swift {
+public struct ww {
     public private(set) var text = "Hello, World!"
 
     public static func main() {
-        print(swift().text)
+        print(ww().text)
         var add: Int64  = 0
         let st = DispatchTime.now()
         for index: Int64 in 1...100000000 {

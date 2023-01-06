@@ -122,64 +122,64 @@ RUN scala -nobootcp -nc app.scala >> result.txt
 FROM swift as swift
 WORKDIR /src
 COPY swift/. .
-RUN swift run -c release >> result.txt
+# RUN swift run -c release >> result.txt
 
-# ==================================================
-FROM ubuntu:22.04 as lua
-WORKDIR /src
-RUN apt-get update
-RUN apt-get install -y lua5.2
-COPY lua/app.lua .
-RUN lua app.lua >> result.txt
+# # ==================================================
+# FROM ubuntu:22.04 as lua
+# WORKDIR /src
+# RUN apt-get update
+# RUN apt-get install -y lua5.2
+# COPY lua/app.lua .
+# RUN lua app.lua >> result.txt
 
-# ==================================================
-FROM ubuntu:22.04 as sqllite
-WORKDIR /src
-RUN apt-get update
-RUN apt-get install -y sqlite3
-COPY sql-sqlite/app.sql .
-RUN sqlite3 < app.sql >> result.txt
+# # ==================================================
+# FROM ubuntu:22.04 as sqllite
+# WORKDIR /src
+# RUN apt-get update
+# RUN apt-get install -y sqlite3
+# COPY sql-sqlite/app.sql .
+# RUN sqlite3 < app.sql >> result.txt
 
-# ==================================================
-FROM ubuntu:22.04 as basic
-WORKDIR /src
-RUN apt-get update
-RUN apt-get install -y yabasic
-COPY basic/app.yab .
-RUN yabasic app.yab >> result.txt
+# # ==================================================
+# FROM ubuntu:22.04 as basic
+# WORKDIR /src
+# RUN apt-get update
+# RUN apt-get install -y yabasic
+# COPY basic/app.yab .
+# RUN yabasic app.yab >> result.txt
 
-# ==================================================
-FROM ubuntu:22.04 as pascal
-WORKDIR /src
-RUN apt-get update
-RUN apt-get install -y fpc
-COPY pascal/app.pas .
-RUN fpc app.pas
-RUN ./app >> result.txt
+# # ==================================================
+# FROM ubuntu:22.04 as pascal
+# WORKDIR /src
+# RUN apt-get update
+# RUN apt-get install -y fpc
+# COPY pascal/app.pas .
+# RUN fpc app.pas
+# RUN ./app >> result.txt
 
-# ==================================================
-FROM ubuntu:22.04 as base
-WORKDIR /app
-COPY --from=nasm /src/result.txt ./nasm.txt
-COPY --from=node /src/result.txt ./node.txt
-COPY --from=gcc /src/result.txt ./gcc.txt
-COPY --from=dotnet-cs /src/result.txt ./dotnet-cs.txt
-COPY --from=python /src/result.txt ./python.txt
-COPY --from=ruby /src/result.txt ./ruby.txt
-COPY --from=openjdk /src/result.txt ./openjdk.txt
-COPY --from=julia /src/result.txt ./julia.txt
-COPY --from=fortran /src/result.txt ./fortran.txt
-COPY --from=rust /src/result.txt ./rust.txt
-COPY --from=golang /src/result.txt ./golang.txt
-COPY --from=r-base /src/result.txt ./r-base.txt
-COPY --from=open-cobol /src/result.txt ./open-cobol.txt
-COPY --from=kotlin /src/result.txt ./kotlin.txt
-COPY --from=dart /src/result.txt ./dart.txt
-COPY --from=perl /src/result.txt ./perl.txt
-COPY --from=scala /src/result.txt ./scala.txt
-COPY --from=swift /src/result.txt ./swift.txt
-COPY --from=lua /src/result.txt ./lua.txt
-COPY --from=sqllite /src/result.txt ./sqllite.txt
-COPY --from=basic /src/result.txt ./basic.txt
-COPY --from=pascal /src/result.txt ./pascal.txt
-ENTRYPOINT cp -r . /result
+# # ==================================================
+# FROM ubuntu:22.04 as base
+# WORKDIR /app
+# COPY --from=nasm /src/result.txt ./nasm.txt
+# COPY --from=node /src/result.txt ./node.txt
+# COPY --from=gcc /src/result.txt ./gcc.txt
+# COPY --from=dotnet-cs /src/result.txt ./dotnet-cs.txt
+# COPY --from=python /src/result.txt ./python.txt
+# COPY --from=ruby /src/result.txt ./ruby.txt
+# COPY --from=openjdk /src/result.txt ./openjdk.txt
+# COPY --from=julia /src/result.txt ./julia.txt
+# COPY --from=fortran /src/result.txt ./fortran.txt
+# COPY --from=rust /src/result.txt ./rust.txt
+# COPY --from=golang /src/result.txt ./golang.txt
+# COPY --from=r-base /src/result.txt ./r-base.txt
+# COPY --from=open-cobol /src/result.txt ./open-cobol.txt
+# COPY --from=kotlin /src/result.txt ./kotlin.txt
+# COPY --from=dart /src/result.txt ./dart.txt
+# COPY --from=perl /src/result.txt ./perl.txt
+# COPY --from=scala /src/result.txt ./scala.txt
+# COPY --from=swift /src/result.txt ./swift.txt
+# COPY --from=lua /src/result.txt ./lua.txt
+# COPY --from=sqllite /src/result.txt ./sqllite.txt
+# COPY --from=basic /src/result.txt ./basic.txt
+# COPY --from=pascal /src/result.txt ./pascal.txt
+# ENTRYPOINT cp -r . /result
