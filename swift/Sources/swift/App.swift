@@ -6,7 +6,6 @@ public struct swift {
 
     public static func main() {
         print(swift().text)
-
         var add: Int64  = 0
         let st = DispatchTime.now()
         for index: Int64 in 1...100000000 {
