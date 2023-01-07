@@ -31,3 +31,6 @@ docker run -it --rm sample1 bash
 docker run -it -v $pwd/kotlin:/kotlin --rm sample1 bash
 
 javac -d bin app.java && jar -cvmf manifest.txt aa.jar -C bin . && java -jar aa.jar
+
+
+docker cp sources.list language-benchmarking:/etc/apt/sources.list
