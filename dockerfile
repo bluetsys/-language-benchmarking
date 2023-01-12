@@ -143,8 +143,9 @@ RUN perl app.pl >> result.txt
 # ==================================================
 FROM swift as swift
 WORKDIR /src
-COPY swift/. .
-RUN swift run -c release >> result.txt
+COPY swift/app.swift .
+RUN swiftc -O -g app.swift
+RUN ./app >> result.txt
 
 # ==================================================
 FROM base
