@@ -19,7 +19,7 @@ RUN lua app.lua >> result.txt
 FROM base as open-cobol
 WORKDIR /src
 COPY cobol/app.cbl .
-RUN cobc -x -free -o ./app app.cbl
+RUN cobc -x -O3 -free -o ./app app.cbl
 RUN ./app >> result.txt
 
 # ==================================================
