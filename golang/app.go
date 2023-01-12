@@ -9,7 +9,7 @@ func main() {
 	add := 0
 	st := time.Now()
 
-	for i := 0; i <= 100000000; i++ {
+	for i := 1; i <= 100000000; i++ {
 		add = add + i
 	}
 
