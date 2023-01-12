@@ -44,7 +44,7 @@ RUN yabasic app.yab >> result.txt
 FROM base as pascal
 WORKDIR /src
 COPY pascal/app.pas .
-RUN fpc app.pas
+RUN fpc -Si -O3 app.pas
 RUN ./app >> result.txt
 
 # ==================================================
