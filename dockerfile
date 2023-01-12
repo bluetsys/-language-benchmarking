@@ -88,7 +88,7 @@ RUN python app.py >> result.txt
 FROM pypy as pypy
 WORKDIR /src
 COPY python/app.py .
-RUN pypy app.py >> result.txt
+RUN pypy app.py pypy >> result.txt
 
 # ==================================================
 FROM ruby as ruby
