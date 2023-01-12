@@ -5,7 +5,7 @@ class app {
     long add = 0L;
     long st = System.currentTimeMillis();
 
-    for (int index = 0; index <= 100000000; index++) {
+    for (int index = 1; index <= 100000000; index++) {
       add = add + index;
     }
 

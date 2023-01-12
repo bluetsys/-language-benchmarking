@@ -1,7 +1,7 @@
 ﻿ulong add = 0;
 var st = System.DateTime.Now;
 
-for (ulong index = 0; index <= 100000000; index++)
+for (ulong index = 1; index <= 100000000; index++)
 {
     add = add + index;
 }
