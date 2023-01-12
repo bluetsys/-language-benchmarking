@@ -155,6 +155,13 @@ RUN swiftc -O -g app.swift
 RUN ./app >> result.txt
 
 # ==================================================
+FROM intel/oneapi-hpckit:devel-ubuntu22.04 as intelfortran
+WORKDIR /src
+COPY fortran/app.f90 .
+RUN ifort -O3 -o ./app app.f90
+RUN ./app " - intel" >> result.txt
+
+# ==================================================
 FROM base
 WORKDIR /app
 COPY --from=nasm /src/result.txt ./nasm.txt
@@ -180,4 +187,5 @@ COPY --from=sqllite /src/result.txt ./sqllite.txt
 COPY --from=basic /src/result.txt ./basic.txt
 COPY --from=pascal /src/result.txt ./pascal.txt
 COPY --from=pypy /src/result.txt ./pypy.txt
+COPY --from=intelfortran /src/result.txt ./intelfortran.txt
 ENTRYPOINT cp -r . /result
