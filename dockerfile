@@ -94,7 +94,7 @@ RUN pypy app.py >> result.txt
 FROM ruby as ruby
 WORKDIR /src
 COPY ruby/app.ru .
-RUN ruby app.ru >> result.txt
+RUN ruby --jit app.ru >> result.txt
 
 # ==================================================
 FROM openjdk as openjdk
@@ -106,7 +106,7 @@ RUN java app.java openjdk >> result.txt
 FROM julia as julia
 WORKDIR /src
 COPY julia/app.jl .
-RUN julia app.jl >> result.txt
+RUN julia -O3 app.jl >> result.txt
 
 # ==================================================
 FROM golang as golang
