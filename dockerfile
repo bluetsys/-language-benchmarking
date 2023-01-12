@@ -67,7 +67,7 @@ RUN node app.js >> result.txt
 FROM gcc as gcc
 WORKDIR /src
 COPY c/app.c .
-RUN gcc -o app app.c
+RUN gcc -O3 -o app app.c
 RUN ./app >> result.txt
 
 # ==================================================
@@ -83,6 +83,12 @@ FROM python as python
 WORKDIR /src
 COPY python/app.py .
 RUN python app.py >> result.txt
+
+# ==================================================
+FROM pypy as pypy
+WORKDIR /src
+COPY python/app.py .
+RUN pypy app.py >> result.txt
 
 # ==================================================
 FROM ruby as ruby
@@ -172,4 +178,5 @@ COPY --from=lua /src/result.txt ./lua.txt
 COPY --from=sqllite /src/result.txt ./sqllite.txt
 COPY --from=basic /src/result.txt ./basic.txt
 COPY --from=pascal /src/result.txt ./pascal.txt
+COPY --from=pypy /src/result.txt ./pypy.txt
 ENTRYPOINT cp -r . /result
