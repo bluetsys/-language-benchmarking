@@ -138,7 +138,8 @@ RUN java -jar ./app.jar >> result.txt
 FROM dart as dart
 WORKDIR /src
 COPY dart/app.dart .
-RUN dart app.dart >> result.txt
+RUN dart compile exe -o app app.dart
+RUN ./app >> result.txt
 
 # ==================================================
 FROM perl as perl
